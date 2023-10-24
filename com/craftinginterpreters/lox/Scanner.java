@@ -1,7 +1,10 @@
 package com.craftinginterpreters.lox;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import static com.craftinginterpreters.lox.TokenType.*;
 
 public class Scanner {
@@ -64,7 +67,7 @@ public class Scanner {
             case ';': addToken(SEMICOLON); break; 
             case '*': addToken(STAR); break;
             case '!': 
-                addToken(match('=') ? BANG_EQUAL : BANG)
+                addToken(match('=') ? BANG_EQUAL : BANG);
                 break;
             case '=':
                 addToken(match('=') ? EQUAL_EQUAL : EQUAL);
@@ -101,7 +104,7 @@ public class Scanner {
                 } else if (isAlpha(c)) {
                     identifier();
                 }
-                Lox.error(line, "Unexpected character.")
+                Lox.error(line, "Unexpected character.");
                 break;
         }
     }
@@ -146,7 +149,7 @@ public class Scanner {
             advance();
         }
         if (isAtEnd()) {
-            Lox.error(line, "Unterminated string.")
+            Lox.error(line, "Unterminated string.");
             return;
         }
 
