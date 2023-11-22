@@ -62,4 +62,12 @@ public class Lox {
         "[line " + line + "] Error" + where + ": " + message);
         hadError = true; 
     }
+
+    static void error(Token token, String mesage) {
+        if (token.type == TokenType.EOF) {
+            report(token.line, " at end", mesage);
+        } else {
+            report(token.line, " at '" + token.lexeme + "'", mesage);
+        }
+    }
 }
